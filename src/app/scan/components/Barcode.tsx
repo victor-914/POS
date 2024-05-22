@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { BarcodeScanner, useTorch } from 'react-barcode-scanner'
+import { BarcodeScanner, useTorch, } from 'react-barcode-scanner'
 import styled from 'styled-components'
 
  const Barcode:FC =  () => {
@@ -8,7 +8,9 @@ import styled from 'styled-components'
   return (
     <StyledBarcode >
         <main className='barcode'>
-        <BarcodeScanner />
+        <BarcodeScanner 
+         onCapture={ async (barcode) => console.log(barcode)}
+        />
 
         </main>
       {isSupportTorch
@@ -32,4 +34,12 @@ align-items: center;
     height: 50%;
     
 }
+
+
+@media (min-width:320px) and (max-width: 480px){
+  
+  background-color: red;
+  width: 98%;
+  height: 60vh;
+} 
 `
