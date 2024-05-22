@@ -14,7 +14,7 @@ const Barcode: FC = () => {
     <StyledBarcode >
       <main className='barcode'>
         <BarcodeScanner
-          onCapture={async (barcode) => console.log(barcode)}
+          onCapture={async (barcode) => alert(barcode)}
         />
 
       </main>
