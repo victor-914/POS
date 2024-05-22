@@ -14,13 +14,14 @@ const Barcode: FC = () => {
     <StyledBarcode >
       <main className='barcode'>
         <BarcodeScanner
-          onCapture={async (barcode) => alert(barcode)}
+        
+          onCapture={async (barcode) => alert(...barcode)}
         />
 
       </main>
-      {isSupportTorch
+      {/* {isSupportTorch
         ? <button onClick={onTorchSwitch}>Swtich Torch</button>
-        : null}
+        : null} */}
     </StyledBarcode>
   )
 }
