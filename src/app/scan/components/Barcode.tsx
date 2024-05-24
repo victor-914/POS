@@ -8,6 +8,7 @@ import { useTorch, } from 'react-barcode-scanner'
 import styled from 'styled-components'
 import BottomDrawer from './BottomDrawer'
 
+
 const Barcode: FC = () => {
   const [isSupportTorch, isOpen, onTorchSwitch] = useTorch()
 
@@ -20,9 +21,9 @@ const Barcode: FC = () => {
         />
 
       </main>
-      {/* {isSupportTorch
+      {isSupportTorch
         ? <button onClick={onTorchSwitch}>Swtich Torch</button>
-        : null} */}
+        : null}
 
       <BottomDrawer />
     </StyledBarcode>
