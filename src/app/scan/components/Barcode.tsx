@@ -6,6 +6,7 @@ const BarcodeScanner = dynamic(() => {
 import React, { FC } from 'react'
 import { useTorch, } from 'react-barcode-scanner'
 import styled from 'styled-components'
+import BottomDrawer from './BottomDrawer'
 
 const Barcode: FC = () => {
   const [isSupportTorch, isOpen, onTorchSwitch] = useTorch()
@@ -14,14 +15,16 @@ const Barcode: FC = () => {
     <StyledBarcode >
       <main className='barcode'>
         <BarcodeScanner
-        
-          onCapture={async (barcode) => alert(...barcode)}
+
+          onCapture={(barcode) => console.log(barcode)}
         />
 
       </main>
       {/* {isSupportTorch
         ? <button onClick={onTorchSwitch}>Swtich Torch</button>
         : null} */}
+
+      <BottomDrawer />
     </StyledBarcode>
   )
 }
@@ -33,10 +36,12 @@ width: 50%;
 height:100vh;
 margin:auto;
 display: flex;
+flex-direction: column;
 align-items: center;
 
+
 .barcode{
-    width: 100%;
+    width: 80%;
     height: 50%;
     
 }
@@ -44,8 +49,18 @@ align-items: center;
 
 @media (min-width:320px) and (max-width: 480px){
   
-  background-color: red;
+  
+  background-color:#D2E7FD;
   width: 98%;
-  height: 60vh;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
 } 
+
+
+.barcode{
+    width: 96%;
+    height: 50%;
+    
+}
 `
