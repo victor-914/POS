@@ -3,29 +3,45 @@ const BarcodeScanner = dynamic(() => {
   import('react-barcode-scanner/polyfill')
   return import('react-barcode-scanner').then(mod => mod.BarcodeScanner)
 }, { ssr: false })
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useTorch, } from 'react-barcode-scanner'
 import styled from 'styled-components'
 import BottomDrawer from './BottomDrawer'
-
+import { Button } from '@mui/material'
+import { TryOutlined } from '@mui/icons-material'
 
 const Barcode: FC = () => {
   const [isSupportTorch, isOpen, onTorchSwitch] = useTorch()
+  const [openDrawer, setOpenDrawer] = useState(false)
+
+  const handleBarcode = (barcode: any) => {
+    console.log(barcode);
+    // Handle the barcode
+    setOpenDrawer(true)
+  };
+
+ 
+
 
   return (
     <StyledBarcode >
       <main className='barcode'>
         <BarcodeScanner
-
-          onCapture={(barcode) => console.log(barcode)}
+          onCapture={handleBarcode}
         />
-
       </main>
-      {isSupportTorch
-        ? <button onClick={onTorchSwitch}>Swtich Torch</button>
-        : null}
 
-      <BottomDrawer />
+      
+      {/* isSupportTorch
+        ? <Button 
+          variant='contained'
+        onClick={onTorchSwitch}>Switch Torch</Button>
+        : null}{ */}
+
+      <BottomDrawer
+       state={openDrawer}
+       setState={setOpenDrawer}
+      />
     </StyledBarcode>
   )
 }
