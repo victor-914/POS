@@ -48,14 +48,15 @@ const rows = [
 ];
 
 export default function ProductListTable() {
- 
-   const router = useRouter()
+
+  const router = useRouter()
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650, marginBottom:"50px" }} aria-label="simple table">
+      <Table sx={{ minWidth: 650, marginBottom: "50px" }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>Name</TableCell>
             <TableCell align="right">Status</TableCell>
             <TableCell align="right">Channel</TableCell>
@@ -63,14 +64,19 @@ export default function ProductListTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row, indx) => (
             <TableRow
               key={row.name}
 
-              onClick={()=> router.push("/")}
+              onClick={() => router.push("/")}
 
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+
+              <TableCell>
+                {indx === 0 ? 1 : indx + 1}
+              </TableCell>
+
 
               <TableCell component="th" scope="row">
                 {row.name}
